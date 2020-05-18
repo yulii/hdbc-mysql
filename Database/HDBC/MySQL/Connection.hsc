@@ -551,6 +551,7 @@ boundType #{const MYSQL_TYPE_NEWDECIMAL} 0 = #{const MYSQL_TYPE_LONGLONG}
 boundType #{const MYSQL_TYPE_NEWDECIMAL} _ = #{const MYSQL_TYPE_DOUBLE}
 boundType #{const MYSQL_TYPE_FLOAT}      _ = #{const MYSQL_TYPE_DOUBLE}
 boundType #{const MYSQL_TYPE_BLOB}       _ = #{const MYSQL_TYPE_VAR_STRING}
+boundType #{const MYSQL_TYPE_LONG_BLOB}  _ = #{const MYSQL_TYPE_VAR_STRING}
 boundType t                              _ = t
 
 -- Returns the amount of storage required for a particular result

@@ -437,7 +437,7 @@ bindOfSqlValue (Types.SqlWord64 n) = do
 bindOfSqlValue (Types.SqlEpochTime epoch) =
   bindOfSqlValue (Types.SqlUTCTime t)
     where t = posixSecondsToUTCTime (fromIntegral epoch)
-                                            
+
 bindOfSqlValue (Types.SqlUTCTime utct) = do
   let t = utcToMysqlTime utct
   buf_ <- new t
@@ -776,6 +776,7 @@ typeIdOfString s
     | "char"      `isPrefixOf` s = ColTypes.SqlCharT
     | "varchar"   `isPrefixOf` s = ColTypes.SqlVarCharT
     | "text"      `isPrefixOf` s = ColTypes.SqlBinaryT
+    | "longtext"  `isPrefixOf` s = ColTypes.SqlBinaryT
     | "timestamp" `isPrefixOf` s = ColTypes.SqlTimestampT
     | "datetime"  `isPrefixOf` s = ColTypes.SqlTimestampT
     | "date"      `isPrefixOf` s = ColTypes.SqlDateT
@@ -1094,4 +1095,3 @@ foreign import ccall unsafe "mysql_query" mysql_query_
 
 foreign import ccall unsafe memset
     :: Ptr () -> CInt -> CSize -> IO ()
-
